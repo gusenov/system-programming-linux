@@ -1,0 +1,58 @@
+- [c++ - Get Computer Name and logged user name - Stack Overflow](https://stackoverflow.com/questions/27914311/get-computer-name-and-logged-user-name)
+
+- [c - Is there a macro definition to check the Linux kernel version? - Stack Overflow](https://stackoverflow.com/questions/16721346/is-there-a-macro-definition-to-check-the-linux-kernel-version/16721774)
+- [C how to use the function uname - Stack Overflow](https://stackoverflow.com/questions/3596310/c-how-to-use-the-function-uname)
+- [linux - Where does uname get its information from? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/136959/where-does-uname-get-its-information-from)
+- [Read linux kernel version using C? - Stack Overflow](https://stackoverflow.com/questions/2987592/read-linux-kernel-version-using-c)
+- [Getting kernel version from linux kernel module at runtime - Stack Overflow](https://stackoverflow.com/questions/8030758/getting-kernel-version-from-linux-kernel-module-at-runtime/8030951#8030951)
+
+- [uname](https://pubs.opengroup.org/onlinepubs/7908799/xsh/uname.html)
+- [<sys/utsname.h>](https://pubs.opengroup.org/onlinepubs/7908799/xsh/sysutsname.h.html)
+
+- [Safari | Linux Socket Programming by Example -> Obtaining Hostnames and Domain Names](http://alas.matf.bg.ac.rs/manuals/lspe/snode=76.html)
+- [getdomainname](http://refspecs.linuxbase.org/LSB_2.1.0/LSB-Core-generic/LSB-Core-generic/baselib-getdomainname.html)
+- [getdomainname - get/set NIS domain name - Linux Man Pages (2)](https://www.systutorials.com/docs/linux/man/2-getdomainname/)
+- [getdomainname(2) - Linux manual page](http://man7.org/linux/man-pages/man2/getdomainname.2.html)
+- [getdomainname(2) - Linux manual page](http://man7.org/linux/man-pages/man2/setdomainname.2.html)
+- [Get the domain name in linux (C programming) - Stack Overflow](https://stackoverflow.com/questions/1663953/get-the-domain-name-in-linux-c-programming)
+
+- [unix - How to get the current directory in a C program? - Stack Overflow](https://stackoverflow.com/questions/298510/how-to-get-the-current-directory-in-a-c-program)
+- [shell - bash/fish command to print absolute path to a file - Stack Overflow](https://stackoverflow.com/questions/3915040/bash-fish-command-to-print-absolute-path-to-a-file)
+
+- [[ubuntu] Create a virtual block device file](https://ubuntuforums.org/showthread.php?t=934532)
+- [How to create virtual block device (loop device/filesystem) in Linux – The Geek Diary](https://www.thegeekdiary.com/how-to-create-virtual-block-device-loop-device-filesystem-in-linux/)
+- [Цинизм в IT: Неизвестный losetup и создание дискового раздела в файле](https://www.stableit.ru/2011/05/losetup.html)
+- [OpenNET: статья - Использование loopback устройства для монитрования root-раздела в Linux (linux mount loop fs ext2fs boot)](https://www.opennet.ru/base/sys/linux_in_file.txt.html)
+
+- [udev - What does `dd if=/dev/zero of=/dev/sda` do - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/275243/what-does-dd-if-dev-zero-of-dev-sda-do)
+- [bash - How do I suppress dd output? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/6699/how-do-i-suppress-dd-output)
+
+- [Ubuntu Manpage: mknod - создает специальные блочные или символьные файлы](http://manpages.ubuntu.com/manpages/precise/ru/man1/mknod.1.html)
+- [mknod(1): make block/char special files - Linux man page](https://linux.die.net/man/1/mknod)
+- [mknod(2) - Linux manual page](http://man7.org/linux/man-pages/man2/mknod.2.html)
+- [utilities - What is the mknod command used for? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/10723/what-is-the-mknod-command-used-for)
+- [command line - What is the opposite of `mknod`? - Stack Overflow](https://stackoverflow.com/questions/22487722/what-is-the-opposite-of-mknod)
+- [Making special files | ITworld](https://www.itworld.com/article/2810198/making-special-files.html)
+- [devices - What are character special and block special files in a unix system? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/60034/what-are-character-special-and-block-special-files-in-a-unix-system)
+- [mknod() — Make a directory or file](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rtmkn.htm)
+- [linux kernel - How to create device files manually use mknod? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/408706/how-to-create-device-files-manually-use-mknod)
+- [files - What are exactly mknod command parameters? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/269648/what-are-exactly-mknod-command-parameters)
+- [Major and Minor Numbers - Linux Device Drivers, Second Edition [Book]](https://www.oreilly.com/library/view/linux-device-drivers/0596000081/ch03s02.html)
+- [makedev(3) - Linux manual page](http://man7.org/linux/man-pages/man3/makedev.3.html)
+
+- [losetup(8): set up/control loop devices - Linux man page](https://linux.die.net/man/8/losetup)
+- [error handling - How to get rid of "Device or resource busy" during setup of loop device? - Ask Ubuntu](https://askubuntu.com/questions/502608/how-to-get-rid-of-device-or-resource-busy-during-setup-of-loop-device)
+- [device driver - losetup -d not working - Stack Overflow](https://stackoverflow.com/questions/34093405/losetup-d-not-working)
+
+- [partitioning - How to create and format a partition using a bash script? - Super User](https://superuser.com/questions/332252/how-to-create-and-format-a-partition-using-a-bash-script)
+- [sfdisk(8): Partition table manipulator for - Linux man page](https://linux.die.net/man/8/sfdisk)
+- [sfdisk(8) - Linux manual page](http://man7.org/linux/man-pages/man8/sfdisk.8.html)
+- [Partition types: List of partition identifiers for PCs](https://www.win.tue.nl/~aeb/partitions/partition_types-1.html)
+- [How To Fix “Warning: Re-reading the partition table failed with error 22: Invalid argument” Error on Linux](https://www.howtogeek.com/168158/how-to-fix-warning-re-reading-the-partition-table-failed-with-error-22-invalid-argument-error-on-linux/)
+- [forum.opennet.ru - "Не получается создать разделы поверх RAID10 (mdadm)" (14)](https://www.opennet.ru/openforum/vsluhforumID1/93597.html)
+
+- [mount(2) - Linux manual page](http://man7.org/linux/man-pages/man2/mount.2.html)
+- [LFCS: How to Mount/Unmount Local and Network (Samba & NFS) Filesystems in Linux - Part 5](https://www.tecmint.com/mount-filesystem-in-linux/)
+- [mount() - Unix, Linux System Call](http://www.tutorialspoint.com/unix_system_calls/mount.htm)
+- [Linux mount and umount information and examples](https://www.computerhope.com/unix/umount.htm)
+- [Mount-Unmount-Remount (The GNU C Library)](https://www.gnu.org/software/libc/manual/html_node/Mount_002dUnmount_002dRemount.html)
