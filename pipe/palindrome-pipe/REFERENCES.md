@@ -19,4 +19,16 @@
 - [Introduction to Named Pipes | Linux Journal](https://www.linuxjournal.com/article/2156)
 - [fifo - Change buffer size of named pipe - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/439196/change-buffer-size-of-named-pipe)
 - [Running Bash Commands in the Background the Right Way](https://www.maketecheasier.com/run-bash-commands-background-linux/)
+- [filesystems - What's the best way to check if a file exists in C? - Stack Overflow](https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c)
+
+- [open(2): open/possibly create file/device - Linux man page](https://linux.die.net/man/2/open)
+- [close(2): close file descriptor - Linux man page](https://linux.die.net/man/2/close)
 - [mkfifo(3): make FIFO special file - Linux man page](https://linux.die.net/man/3/mkfifo)
+- [write(2): to file descriptor - Linux man page](https://linux.die.net/man/2/write)
+- [read(2): read from file descriptor - Linux man page](https://linux.die.net/man/2/read)
+- [remove(3): remove file/directory - Linux man page](https://linux.die.net/man/3/remove)
+
+- [perror(), strerror()](https://www.gta.ufrj.br/ensino/eel878/sockets/perrorman.html)
+- [perror and strerror](http://ultra.pr.erau.edu/~jaffem/classes/cs420/cs420_reference_materials/strerror.htm)
+- [C library function - perror()](https://www.tutorialspoint.com/c_standard_library/c_function_perror.htm)
+- [errno(3) - Linux manual page](http://man7.org/linux/man-pages/man3/errno.3.html)

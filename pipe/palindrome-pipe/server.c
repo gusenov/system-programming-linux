@@ -20,26 +20,57 @@ bool isPalindrome(wchar_t str[]) {
 int main(int argc, char **argv) {
   setlocale(LC_ALL, "");
 
+  if (argc != 2) {
+    wprintf(L"Использование: <исполняемый файл> <имя FIFO-файла>\n");
+    exit(EXIT_FAILURE);
+  }
+
   // Сервер принимает слово:
 
-  char* myfifo = "./myfifo";  // путь к FIFO-файлу.
+  char* myfifo = argv[1];  // путь к FIFO-файлу.
+
+  if (access(myfifo, F_OK ) != -1 ) {
+    wprintf(L"Ошибка! Указанный файл уже существует!\n");
+    exit(EXIT_FAILURE);
+  }
 
   // Создание именованного FIFO-файла:
-  mkfifo(
+  if (mkfifo(
     myfifo,  // путь.
     0666  // права.
-  );
+  ) == -1) {
+    // Много функций возвращают -1 при ошибке и устанавливают числовое значение
+    // переменной errno. Функция perror выводит переданный ей аргумент и далее
+    // осмысленное описание ошибки в зависимости от значения errno.
+    perror(NULL);
+    exit(EXIT_FAILURE);
+  }
 
   // Открыть FIFO только для чтения:
   int fd = open(myfifo, O_RDONLY);
 
+  if (fd == -1) {
+    perror(NULL);
+    exit(EXIT_FAILURE);
+  }
+
   char multibyteWord[MAX_WORD_LEN];
 
   // Считать из FIFO:
-  read(fd, multibyteWord, sizeof(multibyteWord));
+  ssize_t num = read(fd, multibyteWord, sizeof(multibyteWord));
+  if (num == -1) {
+    perror(NULL);
+  }
 
   // Закрыть:
-  close(fd);
+  if (close(fd) == -1) {
+    perror(NULL);
+  }
+
+  // Удалить:
+  if (remove(myfifo) == -1) {
+    perror(NULL);
+  }
 
   // Конвертация слова из мультибайтовой строки символов в строку широких символов:
   wchar_t wideCharWord[MAX_WORD_LEN];

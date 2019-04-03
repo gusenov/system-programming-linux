@@ -32,6 +32,11 @@ bool checkWord(const wchar_t* word)
 	bool hasEnglish = false, hasRussian = false;
 
 	int wordLen = wcslen(word);
+	if (wordLen == 0) {
+		wprintf(L"Ошибка! Пустая строка!\n");
+		return false;
+	}
+
 	for (int i = 0; i < wordLen; ++i)
 	{
 		switch (word[i])
