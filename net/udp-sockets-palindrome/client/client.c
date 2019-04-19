@@ -25,11 +25,14 @@ int main(int argc, char **argv) {
   // Конвертация слова из строки широких символов в мультибайтовую строку символов
   // для последующей её передачи серверу:
   char multibyteWord[MAX_WORD_LEN];
-  wcstombs(
+  memset(multibyteWord, 0, sizeof(multibyteWord));
+  size_t numOfBytesToSent = wcstombs(
      multibyteWord  // мультибайтовая строка символов.
    , wideCharWord  // строка из широких символов.
    , sizeof(multibyteWord)  // макс. количество байт для записи в мультибайтовую строку символов.
   );
+
+  wprintf(L"Количество данных для отправки = %zu\n", numOfBytesToSent);
 
   // И отсылает его серверу:
 
@@ -82,40 +85,62 @@ int main(int argc, char **argv) {
   }
 
   // Отправка:
-  if (sendto(
-    s,  // дескриптор сокета.
-    multibyteWord,  // буфер содержащей данные для отправки.
-    MAX_WORD_LEN,  // размер буфера.
-    0,  // флаги модифицирующие поведение сокета.
-    (struct sockaddr*)&si_other,  // пункт назначения.
-    slen  // размер структуры содержащей пункт назначения.
-  ) == -1) {
-    fwprintf(stderr, L"Не удалось отправить данные на сервер по причине:\n");
-    perror(NULL);
-    exit(EXIT_FAILURE);
-  } else {
-    wprintf(L"Данные отправлены.\n");
-  }
+
+  // Общее число отправленных байт:
+  ssize_t totalNumOfCharSent = 0;
+
+  // Будем делать отправку до тех пор пока не отправим всё:
+  do {
+
+    ssize_t numOfCharSent = sendto(
+      s,  // дескриптор сокета.
+      multibyteWord + totalNumOfCharSent,  // буфер содержащий данные для отправки.
+      numOfBytesToSent - totalNumOfCharSent + 1,  // количество байт для отправки.
+      0,  // флаги модифицирующие поведение сокета.
+      (struct sockaddr*)&si_other,  // пункт назначения.
+      slen  // размер структуры содержащей пункт назначения.
+    );
+
+    if (numOfCharSent == -1) {
+      fwprintf(stderr, L"Не удалось отправить данные на сервер по причине:\n");
+      perror(NULL);
+      exit(EXIT_FAILURE);
+    } else {
+      wprintf(L"%jd символов отправлено.\n", numOfCharSent);
+    }
+
+    // Увеличиваем общее число отправленных байт:
+    totalNumOfCharSent += numOfCharSent;
+
+  } while (totalNumOfCharSent < numOfBytesToSent);
 
   bool result = false;
 
   wprintf(L"Ожидаем результата проверки…\n");
 
   // Приём результата от сервера:
-  if (recvfrom(
-    s,  // дескриптор сокета.
-    &result,  // буфер для приёма данных.
-    sizeof(result),  // размер буфера для приёма данных.
-    0,  // флаги модифицирующие поведение сокета.
-    (struct sockaddr*)&si_other,  // здесь будет структура с адресом источника.
-    &slen  // сюда вернётся размер структуры с адресом источника.
-  ) == -1) {
-    fwprintf(stderr, L"Не удалось принять результаты от сервера по причине:\n");
-    perror(NULL);
-    exit(EXIT_FAILURE);
-  } else {
-    wprintf(L"Данные получены.\n");
-  }
+
+  // Будем делать приём до тех пор пока не получим результирующий байт:
+  ssize_t numOfByteRecv = 0;
+  do {
+    numOfByteRecv = recvfrom(
+      s,  // дескриптор сокета.
+      &result,  // буфер для приёма данных.
+      sizeof(result),  // размер буфера для приёма данных.
+      0,  // флаги модифицирующие поведение сокета.
+      (struct sockaddr*)&si_other,  // здесь будет структура с адресом источника.
+      &slen  // сюда вернётся размер структуры с адресом источника.
+    );
+
+    if (numOfByteRecv == -1) {
+      fwprintf(stderr, L"Не удалось принять результаты от сервера по причине:\n");
+      perror(NULL);
+      exit(EXIT_FAILURE);
+    } else {
+      wprintf(L"%jd байт получен.\n", numOfByteRecv);
+    }
+
+  } while (numOfByteRecv != 1);
 
   // И передача на стандартный вывод результата проверки:
   if (result) {
