@@ -114,41 +114,6 @@ int main(int argc, char **argv) {
 
   } while (totalNumOfCharSent < numOfBytesToSent);
 
-  bool result = false;
-
-  wprintf(L"Ожидаем результата проверки…\n");
-
-  // Приём результата от сервера:
-
-  // Будем делать приём до тех пор пока не получим результирующий байт:
-  ssize_t numOfByteRecv = 0;
-  do {
-    numOfByteRecv = recvfrom(
-      s,  // дескриптор сокета.
-      &result,  // буфер для приёма данных.
-      sizeof(result),  // размер буфера для приёма данных.
-      0,  // флаги модифицирующие поведение сокета.
-      (struct sockaddr*)&si_other,  // здесь будет структура с адресом источника.
-      &slen  // сюда вернётся размер структуры с адресом источника.
-    );
-
-    if (numOfByteRecv == -1) {
-      fwprintf(stderr, L"Не удалось принять результаты от сервера по причине:\n");
-      perror(NULL);
-      exit(EXIT_FAILURE);
-    } else {
-      wprintf(L"%jd байт получен.\n", numOfByteRecv);
-    }
-
-  } while (numOfByteRecv != 1);
-
-  // И передача на стандартный вывод результата проверки:
-  if (result) {
-    wprintf(L"Строка '%ls' является палиндромом.\n", wideCharWord);
-  } else {
-    wprintf(L"Строка '%ls' НЕ является палиндромом.\n", wideCharWord);
-  }
-
   close(s);
 
   return EXIT_SUCCESS;

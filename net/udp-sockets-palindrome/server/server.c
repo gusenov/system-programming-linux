@@ -129,32 +129,6 @@ int main(int argc, char **argv) {
     wprintf(L"Строка '%ls' НЕ является палиндромом.\n", wideCharWord);
   }
 
-  wprintf(L"Отправка результата клиенту.\n");
-
-  // Ответ клиенту:
-
-  // Будем делать отправку до тех пор пока не отправим результирующий байт:
-  ssize_t numOfByteSent = 0;
-  do {
-    numOfByteSent = sendto(
-      s,  // дескриптор сокета.
-      &result,  // буфер содержащий данные для отправки.
-      sizeof(result),  // количество байт для отправки.
-      0,  // флаги модифицирующие поведение сокета.
-      (struct sockaddr*)&si_other,  // пункт назначения.
-      slen  // размер структуры содержащей пункт назначения.
-    );
-
-    if (numOfByteSent == -1) {
-      fwprintf(stderr, L"Не удалось отправить данные на сервер по причине:\n");
-      perror(NULL);
-      exit(EXIT_FAILURE);
-    } else {
-      wprintf(L"%jd байт отправлен.\n", numOfByteSent);
-    }
-
-  } while (numOfByteSent != 1);
-
   close(s);
 
   return EXIT_SUCCESS;
